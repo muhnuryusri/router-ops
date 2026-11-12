@@ -1,0 +1,7 @@
+# Only the OpenAI-compatible API is public. The dashboard stays private (SSH tunnel).
+ai.example.com {
+	handle /v1/* {
+		reverse_proxy 127.0.0.1:20128
+	}
+	respond 404
+}

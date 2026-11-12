@@ -1,0 +1,22 @@
+[Unit]
+Description=9router AI gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=router
+# 9router keeps its data in $HOME/.9router.
+Environment=HOME=/var/lib/9router
+StateDirectory=9router
+WorkingDirectory=/var/lib/9router
+ExecStart=/usr/bin/9router --host 127.0.0.1 --port 20128 --no-browser --skip-update
+Restart=always
+RestartSec=5
+MemoryMax=512M
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
